@@ -1,0 +1,43 @@
+<div class="card">
+  <p-table
+    [value]="apartments"
+    [paginator]="true"
+    [lazy]="true"
+    (onLazyLoad)="loadApartments($event)"
+    [rows]="10"
+    [totalRecords]="totalCount"
+    [showCurrentPageReport]="true"
+    [loading]="loading"
+    [tableStyle]="{ 'min-width': '50rem' }"
+    currentPageReportTemplate="{first} - {last} из {totalRecords} элементов"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [rowHover]="true"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="width: 20%">Номер</th>
+        <th style="width: 20%">Комнаты</th>
+        <th style="width: 20%">Площадь</th>
+        <th style="width: 20%">Этаж</th>
+        <th style="width: 20%">Цена</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-apartment>
+      <tr (click)="onClick(apartment)" pSelectableRow>
+        <td>{{ apartment.number }}</td>
+        <td>{{ apartment.rooms }}</td>
+        <td>{{ apartment.area }}</td>
+        <td>{{ apartment.floor }}</td>
+        <td>{{ apartment.price }}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="paginatorleft">
+      <p-button
+        (click)="onAddButtonClick()"
+        type="button"
+        styleClass="p-button-outlined"
+        >Добавить</p-button
+      >
+    </ng-template>
+  </p-table>
+</div>

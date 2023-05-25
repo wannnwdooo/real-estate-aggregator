@@ -1,0 +1,35 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()" class="flex flex-column py-4">
+  <div
+    *ngFor="let field of formFields"
+    class="flex justify-content-start align-items-center gap-4 mb-1"
+  >
+    <p-inputNumber
+      [formControlName]="field.key"
+      [minFractionDigits]="0"
+      [maxFractionDigits]="5"
+      mode="decimal"
+    ></p-inputNumber>
+    <label>{{ field.label }}</label>
+
+  </div>
+
+  <div class="flex justify-content-between mt-2">
+    <button
+      (click)="onDelete()"
+      pButton
+      pRipple
+      type="button"
+      label="Удалить"
+    ></button>
+
+    <button
+      [disabled]="formGroup.invalid"
+      pButton
+      pRipple
+      type="submit"
+      label="Изменить"
+    ></button>
+  </div>
+
+
+</form>

@@ -1,0 +1,48 @@
+<section class="w-14rem">
+  <p class="name">Комнат</p>
+  <div class="flex justify-content-between">
+    <p-toggleButton
+      *ngFor="let button of toggleButtonGroup"
+      (onChange)="onToggleButtonChange()"
+      [(ngModel)]="button.checked"
+      [onLabel]="button.name"
+      [offLabel]="button.name"
+    ></p-toggleButton>
+  </div>
+
+  <div *ngFor="let param of filterParameters">
+    <p class="name">{{ param.displayName }}</p>
+    <div class="filter">
+      <span class="filter__item">
+        {{
+          param.name === "price"
+            ? convertToMillions(param.rangeValues[0])
+            : param.rangeValues[0]
+        }}
+      </span>
+      <span class="filter__item">
+        {{
+          param.name === "price"
+            ? convertToMillions(param.rangeValues[1])
+            : param.rangeValues[1]
+        }}
+      </span>
+    </div>
+    <p-slider
+      [(ngModel)]="param.rangeValues"
+      [min]="param.minMaxValues[0]"
+      [max]="param.minMaxValues[1]"
+      [range]="true"
+      (onChange)="onSliderChange($event, param)"
+      (onSlideEnd)="onSlideEnd($event, param)"
+    ></p-slider>
+  </div>
+
+  <div class="mt-5 text-center">
+    <p-button
+      (click)="resetFilters()"
+      label="Сбросить фильтр"
+      styleClass="p-button-outlined p-button-secondary"
+    ></p-button>
+  </div>
+</section>

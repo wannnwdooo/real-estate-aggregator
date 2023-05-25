@@ -1,0 +1,22 @@
+<section class="apartments-list">
+  <div
+    *ngFor="let apartment of apartments$ | async"
+    class="apartments-list__item"
+  >
+    <div class="apartments-list__number">
+      <img src="/assets/images/number-flat.svg" alt="Номер" />
+      <span class="apartments-list__number-value text-lg"
+        >№{{ apartment.number }}</span
+      >
+    </div>
+    <img [src]="apartment.image" alt="flat" class="mb-5" />
+    <p class="mb-1 text-lg">
+      {{ apartment.rooms }} комнатная, {{ apartment.area }} м²
+    </p>
+    <p class="mb-4 text-sm">{{ apartment.floor }} этаж</p>
+    <p class="text-4xl">{{ apartment.price }} ₽</p>
+  </div>
+</section>
+<h2 *ngIf="(apartments$ | async)?.length === 0" class="text-center mt-8">
+  Карнавала не будет
+</h2>

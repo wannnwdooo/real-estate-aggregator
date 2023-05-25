@@ -1,0 +1,16 @@
+<section class="text-center mb-5">
+  <img
+    ngSrc="/assets/icons/logo.png"
+    alt="logo"
+    class="mb-3"
+    height="64"
+    width="64"
+  />
+  <div class="text-900 text-3xl mb-3">{{ data.title }}</div>
+  <span class="text-600 line-height-3">{{ data.text }}</span>
+  <a
+    (click)="onClick()"
+    class="no-underline ml-2 text-teal-400 cursor-pointer"
+    >{{ data.link }}</a
+  >
+</section>

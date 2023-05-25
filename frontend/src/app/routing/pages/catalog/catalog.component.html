@@ -1,0 +1,16 @@
+<main class="catalog">
+  <app-filter-group></app-filter-group>
+  <section>
+    <div class="flex mb-3 align-items-end">
+      <h2 class="text-4xl">{{ totalCount }} ВАРИАНТОВ</h2>
+      <p class="sorting">Сортировать:</p>
+      <span (click)="sortApartmentsBy('price')" class="sorting__item"
+        >по цене</span
+      >
+      <span (click)="sortApartmentsBy('area')" class="sorting__item"
+        >по площади</span
+      >
+    </div>
+    <app-apartments-list></app-apartments-list>
+  </section>
+</main>

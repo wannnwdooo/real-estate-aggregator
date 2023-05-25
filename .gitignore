@@ -1,0 +1,9 @@
+.idea
+
+backend/node_modules
+backend/dist
+backend/.idea
+backend/db/migrations
+
+frontend/.idea
+frontend/node_modules

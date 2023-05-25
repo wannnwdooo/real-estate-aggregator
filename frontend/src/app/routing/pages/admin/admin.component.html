@@ -1,0 +1,44 @@
+<div class="min-h-screen flex flex-column">
+  <p-panel class="flex flex-column">
+    <ng-template pTemplate="header">
+      <div class="w-full flex align-items-center">
+        <a routerLink="/">
+          <img
+            ngSrc="/assets/icons/logo.png"
+            alt="logo"
+            height="32"
+            width="32"
+          />
+        </a>
+        <p-button (click)="onLogout()" label="Выйти" class="ml-auto"></p-button>
+      </div>
+    </ng-template>
+    <main class="flex-auto">
+      <app-table
+        (apartmentSelected)="onApartmentSelected($event)"
+        (addButtonClick)="onAddButtonClick()"
+      ></app-table>
+      <app-modal>
+        <app-apartment-update
+          *ngIf="selectedApartment && isUpdateModalVisible"
+          [data]="selectedApartment"
+          (updateSuccess)="onApartmentUpdateSuccess($event)"
+        ></app-apartment-update>
+        <app-apartment-create
+          *ngIf="isCreateModalVisible"
+          (createSuccess)="onApartmentCreateSuccess($event)"
+        ></app-apartment-create>
+      </app-modal>
+    </main>
+  </p-panel>
+  <footer class="flex-auto flex">
+    <a
+      href="https://github.com/wannnwdooo"
+      target="_blank"
+      class="flex ml-auto p-2 align-self-end align-items-center cursor-pointer no-underline hover:no-underline text-black-alpha-90"
+    >
+      <p class="mr-2">wannnwdooo</p>
+      <img src="/assets/icons/github.svg" height="32" width="32"  alt="github"/>
+    </a>
+  </footer>
+</div>

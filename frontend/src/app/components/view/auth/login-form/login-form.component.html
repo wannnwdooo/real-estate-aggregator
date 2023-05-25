@@ -1,0 +1,42 @@
+<form [formGroup]="formGroup" (input)="onFormChange()" (ngSubmit)="onSubmit()">
+  <div class="mb-3">
+    <p class="block text-900 mb-2">Email</p>
+
+    <input
+      type="text"
+      placeholder="Введите email"
+      pInputText
+      formControlName="email"
+      class="w-full"
+    />
+
+    <span class="text-red-500">{{
+      getErrorMsg(formGroup, "email", "required", "Поле обязательно")
+    }}</span>
+  </div>
+
+  <div class="mb-5">
+    <p class="block text-900 mb-2">Пароль</p>
+
+    <input
+      type="password"
+      placeholder="Введите пароль"
+      pInputText
+      formControlName="password"
+      class="w-full"
+    />
+
+    <span class="text-red-500">{{
+      getErrorMsg(formGroup, "password", "required", "Поле обязательно")
+    }}</span>
+  </div>
+
+  <button
+    [disabled]="formGroup.invalid || !!formError"
+    pButton
+    pRipple
+    label="Войти"
+    class="w-full"
+  ></button>
+  <span *ngIf="formError" class="text-red-500">{{ formError }}</span>
+</form>
