@@ -3,7 +3,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { RoutingModule } from '@routing/routing.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { AuthInterceptor } from '@utils/interceptors/auth.interceptor';
 import { AuthService } from '@src/app/services/api/auth.service';
 import { CredentialsInterceptor } from '@utils/interceptors/credentials.interceptor';
 import { HttpUrlInterceptor } from '@utils/interceptors/http-url.interceptor';
@@ -34,11 +33,6 @@ import { NotificationService } from '@services/components/notification.service';
     ToastModule,
   ],
   providers: [
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: CredentialsInterceptor,
